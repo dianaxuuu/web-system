@@ -1,2 +1,2 @@
 # web-system
-umich EECS485 Projects
+Umich web system projects
