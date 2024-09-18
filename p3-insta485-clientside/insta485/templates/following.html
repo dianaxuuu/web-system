@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>insta485</title>
+    <style>
+        .insta {
+            position: absolute;
+            top: 30px;
+            left: 0px;
+        }
+
+        .explore {
+            position: absolute;
+            top: 40px;
+            right: 80px;
+        }
+
+        .awdeorio {
+            position: absolute;
+            top: 40px;
+            right: 10px;
+        }
+
+        .header {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+        }
+
+        .section {
+            margin: auto;
+            width: 500px;
+            height: 50px;
+            border: 1px solid #dfdfdf;
+            margin-top: 20px;
+        }
+
+        .info {
+            display: flex;
+        }
+
+        .info .user_name {
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .info .user_photo {
+            height: 40px;
+            width: 30px;
+            position: relative;
+            top: 5px;
+            left: 10px;
+        }
+
+        .info .following {
+            color: rgba(0, 0, 0, 0.5);
+            margin-left: 320px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a class="insta" href="/"><img src="/static/images/insta_image.jpeg" alt="insta" width="42" height="42"></a>
+        <a class="explore" href="/explore/">explore</a>
+        <a class="awdeorio" href="/users/{{logname}}/">{{logname}}</a>
+
+        <h1 class="header"> Insta485</h1>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <hr>
+
+    <div>
+        <h1>Following</h1>
+    </div>
+
+    <div>
+        {% for follow in following %}
+        <div class="section">
+            <div class="info">
+                <img src="/uploads/{{follow.user_img_url}}" alt="user_photo" class="user_photo">
+                <a href="/users/{{follow.username}}/">
+                    <p class="user_name">{{follow.username}}</p>
+                </a>
+                {% if follow.logname_follows_username == True %}
+                <p class="following">following</p>
+                <form action="/following/?target={{curr_path}}" method="post" enctype="multipart/form-data">
+                    <input type="submit" name="unfollow" value="unfollow" />
+                    <input type="hidden" name="username" value={{follow.username}} />
+                    <input type="hidden" name="operation" value="unfollow" />
+                </form>
+                {% elif follow.logname_follows_username == False and logname != follow.username %}
+                <p class="following">not following</p>
+                <form action="/following/?target={{curr_path}}" method="post" enctype="multipart/form-data">
+                    <input type="submit" name="follow" value="follow" />
+                    <input type="hidden" name="username" value={{follow.username}} />
+                    <input type="hidden" name="operation" value="follow" />
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>insta485</title>
+    <style>
+        .insta {
+            position: absolute;
+            top: 30px;
+            left: 0px;
+        }
+
+        .login {
+            position: absolute;
+            top: 30px;
+            right: 10px;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .header {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+        }
+
+        .main_section {
+            position: absolute;
+            top: 180px;
+            left: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a class="insta" href="/"><img src="/static/images/insta_image.jpeg" alt="insta" width="42" height="42"></a>
+        <p class="login">login</p>
+
+        <h1 class="header"> Insta485</h1>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <hr>
+
+    <div class="main_section">
+        <form action="/accounts/?target=/" method="post" enctype="multipart/form-data">
+            <input type="text" placeholder="username" name="username" required /> <br /><br />
+            <input type="password" placeholder="password" name="password" required /> <br /><br />
+            <input type="submit" value="login" /> <br /><br />
+            <input type="hidden" name="operation" value="login" />
+        </form>
+        <p>Don't have an account? <a href="/accounts/create/">Sign up</a></p>
+    </div>
+</body>
+
+</html>

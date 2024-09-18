@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>insta485</title>
+    <style>
+        .insta {
+            position: absolute;
+            top: 30px;
+            left: 0px;
+        }
+
+        .explore {
+            position: absolute;
+            top: 40px;
+            right: 80px;
+        }
+
+        .awdeorio {
+            position: absolute;
+            top: 40px;
+            right: 10px;
+        }
+
+        .header {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+        }
+
+        .post {
+            margin: auto;
+            width: 950px;
+            height: 600px;
+            border: 1px solid #dfdfdf;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            position: relative
+        }
+
+        .post .post_image {
+            width: 500px;
+            height: 350px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        .post .details {
+            width: 400px;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+
+        .info {
+            display: flex;
+        }
+
+        .info .user_name {
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .info .user_photo {
+            height: 40px;
+            width: 40px;
+            position: relative;
+            top: 10px;
+            left: 10px;
+        }
+
+        .info .timestamp {
+            color: rgba(0, 0, 0, 0.5);
+            margin-left: 200px;
+        }
+
+        .comment span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a class="insta" href="/"><img src="/images/insta_image.jpeg" alt="insta" width="42" height="42"></a>
+        <a class="explore" href="/explore/">explore</a>
+        <a class="awdeorio" href="/users/{{logname}}/">{{logname}}</a>
+
+        <h1 class="header"> Insta485</h1>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <hr>
+
+    <div class="post">
+        <div class="post_image">
+            <img src={{img_url}} alt="post_img" class="post_image">
+        </div>
+        <div class="details">
+            <div class="info">
+                <a href="/users/{{owner}}/"><img src={{owner_img_url}} alt="user_photo" class="user_photo"></a>
+                <a href="/users/{{owner}}/">
+                    <p class="user_name">{{owner}}</p>
+                </a>
+                <a href="/posts/{{postid}}/" class="timestamp">
+                    <p>{{timestamp}}</p>
+                </a>
+            </div>
+            <br />
+
+            {% if likes == 1 %} <p>{{likes}} like</p>
+            {% else %}
+            <p>{{likes}} likes</p>
+            {% endif %}
+
+            <div class="comment_section">
+                {% for comment in comments%}
+                <p class="comment">
+                    <a href="/users/{{comment.owner}}/"><span>{{comment.owner}} </span></a> {{comment.text}}
+                </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

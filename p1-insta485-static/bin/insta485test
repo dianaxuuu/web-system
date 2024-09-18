@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# insta485test
+#
+# Stop on errors, print commands
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+set -x
+# Run all unit tests
+pytest tests/
+# coding style check
+pycodestyle insta485generator
+pydocstyle insta485generator
+pylint --disable=no-value-for-parameter setup.py insta485generator
+# Clear
+rm -rf insta485/html
+# Build
+insta485generator insta485
+# Validate hand-coded HTML
+html5validator --ignore JAVA_TOOL_OPTIONS --root html
+# Validate generated HTMl
+html5validator --ignore JAVA_TOOL_OPTIONS --root insta485/html
+

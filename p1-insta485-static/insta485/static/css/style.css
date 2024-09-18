@@ -1,0 +1,63 @@
+.insta {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+}
+
+.explore {
+    position: absolute;
+    top: 40px;
+    right: 80px;
+}
+
+.awdeorio {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+}
+
+h1 {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+
+
+.post {
+    margin: auto;
+    width: 500px;
+    height: auto;
+    border: 1px solid #dfdfdf;
+    margin-top: 20px;
+}
+
+.info {
+    display: flex;
+}
+
+.info .user_photo {
+    height: 40px;
+    width: 40px;
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+.info .user_name {
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.info .timestamp {
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 260px;
+}
+
+.post_image {
+    width: 500px;
+    height: 100%;
+}
+
+.comment span {
+    font-weight: bold;
+}

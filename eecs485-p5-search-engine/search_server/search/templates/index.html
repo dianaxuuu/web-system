@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ask485</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+    <div class="feed">
+        <h1 class="ask485"> ask485?</h1>
+        <div class="pagerank_weight"> Pagerank Weight</div>
+
+        <form action="/" method="GET">
+            <div><input type="text" name="q" class="input" value="{{query}}" /></div>
+            <div><input type="range" name="w" min="0" max="1" step="0.01" class="input" value={{weight}} /></div>
+            <input type="submit" value="Search" class="input" />
+        </form>
+
+        <div class="docs">
+            {% if not docs %}
+            <div class="no_results">No search results found!</div>
+            {% endif %}
+            {% for doc in docs %}
+            <a class="doc_url" href="{{doc.url}}">{{doc.url}}</a>
+            <div class="doc_title">{{doc.title}}</div>
+            <div class="doc_summary">{{doc.summary}}</div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
